@@ -25,6 +25,6 @@ for image in nova.images.list():
 pt = prettytable.PrettyTable(["Tenant", "Status", "Flavor", "Name", "Image", "Created"])
 servers = nova.servers.list(search_opts={'all_tenants': True})
 for server in servers:
-    pt.add_row([tenant_dict[server.tenant_id], server.status, flavor_dict[server.flavor.get("id")], 
+    pt.add_row([[tenant_dict[server.tenant_id], server.status, flavor_dict[server.flavor.get("id")], 
         server.name, image_dict[server.image['id']], server._info["created"]])
 print pt.get_string(sortby="Tenant")
